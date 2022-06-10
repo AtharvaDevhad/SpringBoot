@@ -6,6 +6,7 @@ import java.util.List;
 //import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,6 +35,9 @@ public class AtharvaStudent {
 	@Column(nullable = false)
 	private String name;
 	
+	@Embedded
+	private Address address;
+	
 	@OneToOne(fetch=FetchType.LAZY)
 	private AtharvaPassport passport;
 	
@@ -58,6 +62,14 @@ public class AtharvaStudent {
 		return name;
 	}
 	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}

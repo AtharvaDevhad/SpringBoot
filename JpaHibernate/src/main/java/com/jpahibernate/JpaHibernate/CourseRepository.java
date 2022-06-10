@@ -17,8 +17,12 @@ public class CourseRepository {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	EntityManager em;
+	
+	
 	public AtharvaCourse findById(Long id) {
-		return em.find(AtharvaCourse.class, id);
+		AtharvaCourse course = em.find(AtharvaCourse.class, id);
+		System.out.println("AtharvaCourse->{}" + course);
+		return course;
 	}
 	
 	
@@ -32,13 +36,13 @@ public class CourseRepository {
 		return course;
 	}
 	
-	/*
+	
 	public void deleteById(Long id) {
 		AtharvaCourse course = findById(id);
 		em.remove(course);
 
 	}
-	*/
+	
 	public void playWithEntityManager() {
 		
      AtharvaCourse course1 = new AtharvaCourse("Web Services in 100 Steps");
@@ -66,8 +70,8 @@ public class CourseRepository {
 	public void addHardcodedReviewsForCourse() {
 		AtharvaCourse course = findById(1346L);
 		System.out.println("course.getReviews()->{}" + course.getReviews());
-		AtharvaReview review1=new AtharvaReview("5","Great Hands-on Stuff.");	
-		AtharvaReview review2=new AtharvaReview("5","Hatsoff.");
+		AtharvaReview review1=new AtharvaReview(ReviewRating.FIVE,"Great Hands-on Stuff.");	
+		AtharvaReview review2=new AtharvaReview(ReviewRating.FIVE,"Hatsoff.");
 		
 		course.addReview(review1);
 		review1.setCourse(course);

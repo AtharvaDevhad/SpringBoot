@@ -33,6 +33,18 @@ class StudentRepositoryTests {
 	
 	@Test
 	@Transactional
+	public void setAddressDetails() {
+		AtharvaStudent student = em.find(AtharvaStudent.class,21L);
+		student.setAddress(new Address("No 777","Back Gate","pune"));
+		em.flush();
+		System.out.println("student ->{}"+ student);
+		System.out.println("passport ->{}"+ student.getPassport());
+		
+	
+	
+}
+	@Test
+	@Transactional
 	public void retrieveStudentAndPassportDetails() {
 		AtharvaStudent student = em.find(AtharvaStudent.class,21L);
 		System.out.println("student ->{}"+ student);
